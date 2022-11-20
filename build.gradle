@@ -1,19 +1,35 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group = 'it.ohalee.framework'
+version = '1.0.0'
+
+sourceCompatibility = 1.17
+targetCompatibility = 1.17
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    maven { url 'https://repo.velocitypowered.com/releases/' }
+    maven { url 'https://jitpack.io/' }
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
 
-test {
-    useJUnitPlatform()
+    implementation "net.kyori:adventure-text-minimessage:4.11.0"
+
+    compileOnly "it.ohalee.framework:common:1.0.0"
+    compileOnly "it.ohalee.framework:velocity:1.0.0"
+    compileOnly 'com.google.inject:guice:5.1.0'
+
+    compileOnly 'com.velocitypowered:velocity-api:3.0.1'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.0.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }

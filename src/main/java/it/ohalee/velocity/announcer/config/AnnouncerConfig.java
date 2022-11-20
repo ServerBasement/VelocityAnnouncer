@@ -8,11 +8,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Config {
+public class AnnouncerConfig {
 
     private final ConfigurationAdapter configuration;
 
-    public Config(Announcer announcer, String fileName) {
+    public AnnouncerConfig(Announcer announcer, String fileName) {
         configuration = new VelocityConfigAdapter(null, new File(announcer.getConfigDirectory().toFile(), fileName).toPath());
     }
 

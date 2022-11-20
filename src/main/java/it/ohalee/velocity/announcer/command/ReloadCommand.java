@@ -1,6 +1,7 @@
-package it.ohalee.velocity.announcer;
+package it.ohalee.velocity.announcer.command;
 
 import com.velocitypowered.api.command.RawCommand;
+import it.ohalee.velocity.announcer.Announcer;
 import lombok.AllArgsConstructor;
 import net.kyori.adventure.text.Component;
 
