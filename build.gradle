@@ -5,9 +5,6 @@ plugins {
 group = 'it.ohalee.framework'
 version = '1.0.0'
 
-sourceCompatibility = 1.17
-targetCompatibility = 1.17
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }

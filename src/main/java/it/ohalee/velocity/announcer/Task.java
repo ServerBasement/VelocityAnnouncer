@@ -22,9 +22,9 @@ public class Task implements Runnable {
     public void run() {
         Collection<Player> players = proxy.getAllPlayers();
 
-      //  if (players.size() == 0) {
-      //      return;
-      //  }
+        if (players.size() == 0) {
+            return;
+        }
 
         List<List<String>> messages = config.getMessages();
 
@@ -40,9 +40,6 @@ public class Task implements Runnable {
         for (var player : players)
             for (var row : toSend)
                 player.sendMessage(row);
-
-        for (var row : toSend)
-            proxy.sendMessage(row);
 
         index++;
     }

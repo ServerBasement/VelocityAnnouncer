@@ -49,7 +49,7 @@ public class Announcer {
         config = new AnnouncerConfig(this, "config.yml");
 
         proxy.getScheduler().buildTask(this, new Task(proxy, config, 0))
-                .repeat(2, TimeUnit.SECONDS)
+                .repeat(120, TimeUnit.SECONDS)
                 .schedule();
 
         this.proxy.getCommandManager().register("vann", new ReloadCommand(this));
