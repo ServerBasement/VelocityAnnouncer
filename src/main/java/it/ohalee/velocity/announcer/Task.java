@@ -22,26 +22,21 @@ public class Task implements Runnable {
     public void run() {
         Collection<Player> players = proxy.getAllPlayers();
 
-        if (players.size() == 0) {
-            return;
-        }
+        if (players.size() == 0) return;
 
         List<List<String>> messages = config.getMessages();
 
-        if (index >= messages.size())
-            index = 0;
+        if (index >= messages.size()) index = 0;
 
-        List<String> message = messages.get(index);
+        List<String> message = messages.get(index++);
         List<Component> toSend = new ArrayList<>();
 
-        for (var row : message)
+        for (String row : message)
             toSend.add(MiniMessage.miniMessage().deserialize(row));
 
-        for (var player : players)
-            for (var row : toSend)
+        for (Player player : players)
+            for (Component row : toSend)
                 player.sendMessage(row);
-
-        index++;
     }
 
 }

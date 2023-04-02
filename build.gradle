@@ -5,6 +5,11 @@ plugins {
 group = 'it.ohalee.framework'
 version = '1.0.0'
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -12,7 +17,7 @@ tasks.withType(JavaCompile) {
 repositories {
     mavenCentral()
     mavenLocal()
-    maven { url 'https://repo.velocitypowered.com/releases/' }
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
     maven { url 'https://jitpack.io/' }
 }
 
@@ -20,8 +25,7 @@ dependencies {
 
     implementation "net.kyori:adventure-text-minimessage:4.11.0"
 
-    compileOnly "it.ohalee.framework:common:1.0.0"
-    compileOnly "it.ohalee.framework:velocity:1.0.0"
+    compileOnly "it.ohalee.basementlib:api:1.0"
     compileOnly 'com.google.inject:guice:5.1.0'
 
     compileOnly 'com.velocitypowered:velocity-api:3.0.1'

@@ -8,6 +8,7 @@ import com.velocitypowered.api.plugin.Dependency;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
+import it.ohalee.basementlib.api.BasementProvider;
 import it.ohalee.velocity.announcer.command.ReloadCommand;
 import it.ohalee.velocity.announcer.config.AnnouncerConfig;
 import lombok.Getter;
@@ -24,9 +25,8 @@ import java.util.concurrent.TimeUnit;
         authors = "ohAlee",
         description = "Announcer",
         dependencies = {
-                @Dependency(id = "velocityservercore")
+                @Dependency(id = "basementlib")
         }
-
 )
 public class Announcer {
 
@@ -46,13 +46,13 @@ public class Announcer {
 
     @Subscribe
     public void onProxyInitialize(ProxyInitializeEvent e) {
-        config = new AnnouncerConfig(this, "config.yml");
+        config = new AnnouncerConfig(BasementProvider.get(), this, "config.yml");
 
         proxy.getScheduler().buildTask(this, new Task(proxy, config, 0))
-                .repeat(120, TimeUnit.SECONDS)
+                .repeat(config.getInterval(), TimeUnit.SECONDS)
                 .schedule();
 
-        this.proxy.getCommandManager().register("vann", new ReloadCommand(this));
+        this.proxy.getCommandManager().register("vannouncer", new ReloadCommand(this), "vann");
     }
 
     @Subscribe

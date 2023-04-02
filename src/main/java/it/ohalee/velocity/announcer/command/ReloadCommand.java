@@ -14,7 +14,7 @@ public class ReloadCommand implements RawCommand {
     public void execute(Invocation invocation) {
         announcer.getConfig().reload();
 
-        invocation.source().sendMessage(Component.text("§b§lAnnouncer: §aConfig reloaddato"));
+        invocation.source().sendMessage(Component.text("§b§lAnnouncer: §aConfig reloaded"));
     }
 
     @Override
