@@ -21,17 +21,14 @@ public class Task implements Runnable {
     @Override
     public void run() {
         Collection<Player> players = proxy.getAllPlayers();
-
         if (players.size() == 0) return;
 
         List<List<String>> messages = config.getMessages();
-
+        if (messages.size() == 0) return;
         if (index >= messages.size()) index = 0;
 
-        List<String> message = messages.get(index++);
         List<Component> toSend = new ArrayList<>();
-
-        for (String row : message)
+        for (String row : messages.get(index++))
             toSend.add(MiniMessage.miniMessage().deserialize(row));
 
         for (Player player : players)

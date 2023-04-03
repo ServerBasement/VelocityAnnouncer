@@ -1,7 +1,4 @@
 interval: 120
-names:
-  - "example1"
-  - "example2"
 
 messages:
   example1:
